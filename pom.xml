@@ -9,6 +9,7 @@
         <module>discovery-server</module>
         <module>api-gateway</module>
         <module>orders-service</module>
+        <module>core</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -39,6 +40,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.appdeveloperblog.estore</groupId>
+                <artifactId>core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>

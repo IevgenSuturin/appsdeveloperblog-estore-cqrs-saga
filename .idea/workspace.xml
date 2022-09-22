@@ -4,63 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19ed814a-d8f7-4e88-9cf7-ac5cf7e5b5f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ProductServiceApplication.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/appsdeveloperblog/estore/apigateway/ApiGatewayApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/src/main/java/com/appsdeveloperblog/estore/discoveryserver/DiscoveryServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/OrdersServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/command/CreateOrderCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/command/OrderAggregate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/command/rest/CreateOrderRestModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/command/rest/OrdersCommandController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/core/data/OrderEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/core/data/OrdersRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/core/errorhandling/OrdersErrorMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/core/errorhandling/OrdersServiceErrorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/core/errorhandling/OrdersServiceEventsErrorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/core/events/OrderCreatedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/core/model/OrderStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/query/FindOrdersQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/query/OrdersEventsHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/query/OrdersQueryHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/query/rest/OrdersQueryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/query/rest/OrdersRestModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders-service/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/ProductServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/command/CreateProductCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/command/ProductAggregate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/command/ProductLookupEventsHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/command/interceprots/CreateProductCommandInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/command/rest/CreateProductRestModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/command/rest/ProductCommandController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/core/data/ProductEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/core/data/ProductLookupEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/core/data/ProductLookupRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/core/data/ProductsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/core/errorhandling/ProductsErrorMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/core/errorhandling/ProductsServiceErrorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/core/errorhandling/ProductsServiceEventsErrorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/core/events/ProductCreatedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/query/FindProductsQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/query/ProductEventsHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/query/ProductsQueryHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/query/rest/ProductQueryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/query/rest/ProductRestModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/resources/application.yml" afterDir="false" />
+    <list default="true" id="19ed814a-d8f7-4e88-9cf7-ac5cf7e5b5f5" name="Changes" comment="Discovery Server, API Gateway, Product Service, Orders Service implementation">
+      <change afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/com/appsdeveloperblog/estore/core/commands/ReserveProductCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orders-service/src/main/java/com/appsdeveloperblog/estore/orderservice/saga/OrderSaga.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orders-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/command/ProductAggregate.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/appsdeveloperblog/estore/productservice/command/ProductAggregate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +131,14 @@
       <option name="presentableId" value="Default" />
       <updated>1663243396594</updated>
     </task>
+    <task id="LOCAL-00001" summary="Discovery Server, API Gateway, Product Service, Orders Service implementation">
+      <created>1663689572809</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1663689572809</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -190,6 +151,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Discovery Server, API Gateway, Product Service, Orders Service implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Discovery Server, API Gateway, Product Service, Orders Service implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
