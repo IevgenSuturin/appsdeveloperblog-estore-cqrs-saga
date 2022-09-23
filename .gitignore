@@ -3,8 +3,13 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+h2-data/**
+docker-data/data/**
+docker-data/eventdata/**
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
+.idea/workspace.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
