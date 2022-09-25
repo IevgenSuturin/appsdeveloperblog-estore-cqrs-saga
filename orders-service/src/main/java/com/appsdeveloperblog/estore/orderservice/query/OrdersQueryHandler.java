@@ -2,7 +2,9 @@ package com.appsdeveloperblog.estore.orderservice.query;
 
 import com.appsdeveloperblog.estore.orderservice.core.data.OrderEntity;
 import com.appsdeveloperblog.estore.orderservice.core.data.OrdersRepository;
+import com.appsdeveloperblog.estore.orderservice.core.model.OrderSummary;
 import com.appsdeveloperblog.estore.orderservice.query.rest.OrdersRestModel;
+import org.aspectj.weaver.ast.Or;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -20,7 +22,14 @@ public class OrdersQueryHandler {
     }
 
     @QueryHandler
-    public List<OrdersRestModel> findOrders(FindOrdersQuery findOrdersQuery) {
+    public OrderSummary findOrder(FindOrderQuery findOrderQuery){
+        OrderEntity orderEntity = ordersRepository.findByOrderId(findOrderQuery.getOrderId());
+        return new OrderSummary(orderEntity.getOrderId(),
+                orderEntity.getOrderStatus(), "");
+    }
+
+    @QueryHandler
+    public List<OrdersRestModel> findAllOrders(FindOrdersQuery findOrdersQuery) {
         List<OrdersRestModel> ordersList = new ArrayList<>();
         List<OrderEntity> storedOrders = ordersRepository.findAll();
 

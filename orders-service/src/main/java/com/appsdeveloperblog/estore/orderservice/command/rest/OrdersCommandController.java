@@ -1,8 +1,9 @@
 package com.appsdeveloperblog.estore.orderservice.command.rest;
 
-import com.appsdeveloperblog.estore.orderservice.command.CreateOrderCommand;
+import com.appsdeveloperblog.estore.orderservice.command.commands.CreateOrderCommand;
 import com.appsdeveloperblog.estore.orderservice.core.model.OrderStatus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,9 +18,11 @@ import java.util.UUID;
 public class OrdersCommandController {
 
     private final CommandGateway commandGateway;
+    private final QueryGateway queryGateway;
 
-    public OrdersCommandController(CommandGateway commandGateway) {
+    public OrdersCommandController(CommandGateway commandGateway, QueryGateway queryGateway) {
         this.commandGateway = commandGateway;
+        this.queryGateway = queryGateway;
     }
 
     @PostMapping

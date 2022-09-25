@@ -10,6 +10,8 @@
         <module>api-gateway</module>
         <module>orders-service</module>
         <module>core</module>
+        <module>user-service</module>
+        <module>patments-service</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -2,6 +2,7 @@ package com.appsdeveloperblog.estore.orderservice.query;
 
 import com.appsdeveloperblog.estore.orderservice.core.data.OrderEntity;
 import com.appsdeveloperblog.estore.orderservice.core.data.OrdersRepository;
+import com.appsdeveloperblog.estore.orderservice.core.events.OrderApprovedEvent;
 import com.appsdeveloperblog.estore.orderservice.core.events.OrderCreatedEvent;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
@@ -31,5 +32,19 @@ public class OrdersEventsHandler {
         BeanUtils.copyProperties(event, orderEntity);
 
         ordersRepository.save(orderEntity);
+    }
+
+    @EventHandler
+    public void on(OrderApprovedEvent event) {
+        OrderEntity orderEntity = ordersRepository.findByOrderId(event.getOrderId());
+
+        if (orderEntity == null) {
+            // TODO: Do something about it
+            return;
+        }
+        orderEntity.setOrderStatus(event.getOrderStatus());
+
+        ordersRepository.save(orderEntity);
+
     }
 }

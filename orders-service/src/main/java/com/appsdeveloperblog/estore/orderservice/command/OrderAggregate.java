@@ -1,5 +1,8 @@
 package com.appsdeveloperblog.estore.orderservice.command;
 
+import com.appsdeveloperblog.estore.orderservice.command.commands.ApproveOrderCommand;
+import com.appsdeveloperblog.estore.orderservice.command.commands.CreateOrderCommand;
+import com.appsdeveloperblog.estore.orderservice.core.events.OrderApprovedEvent;
 import com.appsdeveloperblog.estore.orderservice.core.events.OrderCreatedEvent;
 import com.appsdeveloperblog.estore.orderservice.core.model.OrderStatus;
 import org.axonframework.commandhandling.CommandHandler;
@@ -18,6 +21,9 @@ public class OrderAggregate {
     private int quantity;
     private String addressId;
     private OrderStatus orderStatus;
+
+    public OrderAggregate(){
+    }
 
     @CommandHandler
     public OrderAggregate(CreateOrderCommand createOrderCommand) {
@@ -48,5 +54,19 @@ public class OrderAggregate {
         this.quantity = orderCreatedEvent.getQuantity();
         this.addressId = orderCreatedEvent.getAddressId();
         this.orderStatus = orderCreatedEvent.getOrderStatus();
+    }
+
+    @CommandHandler
+    public void handle(ApproveOrderCommand approveOrderCommand) {
+        // Create and publish OrderApproveEvent
+        OrderApprovedEvent orderApprovedEvent =
+                new OrderApprovedEvent(approveOrderCommand.getOrderId());
+
+        AggregateLifecycle.apply(orderApprovedEvent);
+    }
+
+    @EventSourcingHandler
+    protected void on(OrderApprovedEvent orderApprovedEvent) {
+        this.orderStatus = orderApprovedEvent.getOrderStatus();
     }
 }

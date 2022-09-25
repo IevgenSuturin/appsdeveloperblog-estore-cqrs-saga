@@ -1,8 +1,8 @@
 spring:
   application:
-    name: products-service
+    name: payments-service
   datasource:
-    url: jdbc:h2:file:/data-disk/workspace/gitrepository/learning/appsdeveloperblog-estore-cqrs-saga/h2-data/products;AUTO_SERVER=true
+    url: jdbc:h2:file:/data-disk/workspace/gitrepository/learning/appsdeveloperblog-estore-cqrs-saga/h2-data/payments;AUTO_SERVER=true
     username: root
     password: 1234
     driver-class-name: org.h2.Driver
@@ -29,9 +29,3 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${instanceId:${random.value}}
-
-axon:
-  eventhandling:
-    processors:
-      product-group:
-        mode: subscribing
