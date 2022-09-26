@@ -2,7 +2,7 @@ package com.appdeveloperblog.estore.paymentsservice.events;
 
 import com.appdeveloperblog.estore.paymentsservice.data.PaymentEntity;
 import com.appdeveloperblog.estore.paymentsservice.data.PaymentsRepository;
-import com.appsdeveloperblog.estore.core.events.PaymentProcessEvent;
+import com.appsdeveloperblog.estore.core.events.PaymentProcessedEvent;
 import org.axonframework.eventhandling.EventHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ public class PaymentEventsHandler {
     }
 
     @EventHandler
-    public void on(PaymentProcessEvent event) {
+    public void on(PaymentProcessedEvent event) {
         logger.info("PaymentProcessEvent is called for orderId: " + event.getOrderId());
 
         PaymentEntity paymentEntity = new PaymentEntity();

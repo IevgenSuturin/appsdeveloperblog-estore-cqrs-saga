@@ -1,7 +1,7 @@
 package com.appdeveloperblog.estore.paymentsservice.command;
 
 import com.appsdeveloperblog.estore.core.commands.ProcessPaymentCommand;
-import com.appsdeveloperblog.estore.core.events.PaymentProcessEvent;
+import com.appsdeveloperblog.estore.core.events.PaymentProcessedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -33,17 +33,17 @@ public class PaymentAggregate {
         }
 
 
-        PaymentProcessEvent paymentProcessEvent =PaymentProcessEvent.builder()
+        PaymentProcessedEvent paymentProcessedEvent =PaymentProcessedEvent.builder()
                 .paymentId(processPaymentCommand.getPaymentId())
                 .orderId(processPaymentCommand.getOrderId())
                 .build();
 
-        AggregateLifecycle.apply(paymentProcessEvent);
+        AggregateLifecycle.apply(paymentProcessedEvent);
     }
 
     @EventSourcingHandler
-    public void on(PaymentProcessEvent paymentProcessEvent) {
-        this.paymentId = paymentProcessEvent.getPaymentId();
-        this.orderId = paymentProcessEvent.getOrderId();
+    public void on(PaymentProcessedEvent paymentProcessedEvent) {
+        this.paymentId = paymentProcessedEvent.getPaymentId();
+        this.orderId = paymentProcessedEvent.getOrderId();
     }
 }

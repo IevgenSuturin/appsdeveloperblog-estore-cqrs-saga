@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class PaymentProcessEvent {
+public class PaymentProcessedEvent {
     private final String orderId;
     private final String paymentId;
 }
