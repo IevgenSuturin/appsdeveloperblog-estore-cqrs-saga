@@ -32,13 +32,11 @@ public class OrdersQueryHandler {
     public List<OrdersRestModel> findAllOrders(FindOrdersQuery findOrdersQuery) {
         List<OrdersRestModel> ordersList = new ArrayList<>();
         List<OrderEntity> storedOrders = ordersRepository.findAll();
-
         for (OrderEntity storedOrder: storedOrders) {
             OrdersRestModel ordersRestModel = new OrdersRestModel();
             BeanUtils.copyProperties(storedOrder, ordersRestModel);
             ordersList.add(ordersRestModel);
         }
-
         return ordersList;
     }
 }
