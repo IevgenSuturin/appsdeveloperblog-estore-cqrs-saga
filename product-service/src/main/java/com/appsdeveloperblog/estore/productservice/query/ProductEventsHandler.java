@@ -1,5 +1,6 @@
 package com.appsdeveloperblog.estore.productservice.query;
 
+import com.appsdeveloperblog.estore.core.events.ProductReservationCanceledEvent;
 import com.appsdeveloperblog.estore.core.events.ProductReservedEvent;
 import com.appsdeveloperblog.estore.productservice.core.data.ProductEntity;
 import com.appsdeveloperblog.estore.productservice.core.data.ProductsRepository;
@@ -49,5 +50,14 @@ public class ProductEventsHandler {
         productsRepository.save(productEntity);
 
         logger.info("ProductReservedEvent is called for productId: " + event.getProductId());
+    }
+
+    @EventHandler
+    public void on(ProductReservationCanceledEvent event) {
+        ProductEntity productEntity = productsRepository.findByProductId(event.getProductId());
+        productEntity.setQuantity(productEntity.getQuantity() + event.getQuantity());
+        productsRepository.save(productEntity);
+
+        logger.info("ProductReservationCanceledEvent is called for productId: " + event.getProductId());
     }
 }

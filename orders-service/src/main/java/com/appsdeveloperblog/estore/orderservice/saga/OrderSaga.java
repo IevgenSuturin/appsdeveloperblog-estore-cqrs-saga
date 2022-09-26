@@ -1,14 +1,18 @@
 package com.appsdeveloperblog.estore.orderservice.saga;
 
+import com.appsdeveloperblog.estore.core.commands.CancelProductReservationCommand;
 import com.appsdeveloperblog.estore.core.commands.ProcessPaymentCommand;
 import com.appsdeveloperblog.estore.core.commands.ReserveProductCommand;
 import com.appsdeveloperblog.estore.core.events.PaymentProcessEvent;
+import com.appsdeveloperblog.estore.core.events.ProductReservationCanceledEvent;
 import com.appsdeveloperblog.estore.core.events.ProductReservedEvent;
 import com.appsdeveloperblog.estore.core.model.User;
 import com.appsdeveloperblog.estore.core.query.FetchUserPaymentDetailsQuery;
 import com.appsdeveloperblog.estore.orderservice.command.commands.ApproveOrderCommand;
+import com.appsdeveloperblog.estore.orderservice.command.commands.RejectOrderCommand;
 import com.appsdeveloperblog.estore.orderservice.core.events.OrderApprovedEvent;
 import com.appsdeveloperblog.estore.orderservice.core.events.OrderCreatedEvent;
+import com.appsdeveloperblog.estore.orderservice.core.events.OrderRejectedEvent;
 import com.beust.ah.A;
 import org.aspectj.weaver.ast.Or;
 import org.axonframework.commandhandling.CommandCallback;
@@ -81,13 +85,13 @@ public class OrderSaga {
                     .join();
         } catch (Exception ex) {
             logger.error(ex.getMessage());
-            // Start compensating transaction
+            cancelProductReservation(productReservedEvent, ex.getMessage());
             return;
         }
 
         if (userPaymentDetails == null) {
             logger.error("No payment details are available for userId: " + productReservedEvent.getUserId());
-            // Start compensation transaction
+            cancelProductReservation(productReservedEvent, "Could not fetch user payment details");
             return;
         }
         logger.info("Successfully fetched payment details for user " + userPaymentDetails.getFirstName());
@@ -104,14 +108,28 @@ public class OrderSaga {
             result = commandGateway.sendAndWait(processPaymentCommand, 10, TimeUnit.SECONDS);
         } catch (Exception ex) {
             logger.error(ex.getMessage());
-            // Start compensating transaction
+            cancelProductReservation(productReservedEvent, ex.getMessage());
             return;
         }
 
         if (result == null ){
             logger.info("The ProcessPaymentCommand resulted NULL. Initiating compensating transactions");
-            // Start compensating transaction
+            cancelProductReservation(productReservedEvent, "Could not process user payment with provided payment details");
+            return;
         }
+    }
+
+    private void cancelProductReservation(ProductReservedEvent productReservedEvent, String reason) {
+
+        CancelProductReservationCommand publishProductReservationCommand =
+                CancelProductReservationCommand.builder()
+                        .productId(productReservedEvent.getProductId())
+                        .quantity(productReservedEvent.getQuantity())
+                        .orderId(productReservedEvent.getOrderId())
+                        .reason(reason)
+                        .build();
+
+        commandGateway.send(publishProductReservationCommand);
     }
 
 
@@ -129,5 +147,22 @@ public class OrderSaga {
     public void handle(OrderApprovedEvent orderApprovedEvent) {
         logger.info("Order is approved. Order Saga is complete for orderId: " + orderApprovedEvent.getOrderId());
 //        SagaLifecycle.end();
+    }
+
+    @SagaEventHandler(associationProperty = "orderId")
+    public void handle(ProductReservationCanceledEvent productReservationCanceledEvent) {
+        // Create and send RejectOrderCommand
+        RejectOrderCommand rejectOrderCommand = new RejectOrderCommand(
+                productReservationCanceledEvent.getOrderId(),
+                productReservationCanceledEvent.getReason()
+        );
+
+        commandGateway.send(rejectOrderCommand);
+    }
+
+    @EndSaga
+    @SagaEventHandler(associationProperty = "orderId")
+    public void handle(OrderRejectedEvent orderRejectedEvent) {
+        logger.info("Successfully rejected order with orderId: " + orderRejectedEvent.getOrderId());
     }
 }

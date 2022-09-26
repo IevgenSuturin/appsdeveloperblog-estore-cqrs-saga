@@ -1,10 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ProductServiceApplication" type="Application" factoryName="Application" singleton="false">
-    <option name="MAIN_CLASS_NAME" value="com.appsdeveloperblog.estore.productservice.ProductServiceApplication" />
+  <configuration default="false" name="ProductServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <option name="ACTIVE_PROFILES" />
     <module name="product-service" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.appsdeveloperblog.estore.productservice.ProductServiceApplication" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.appsdeveloper.blog.estore.productservice.*" />
+        <option name="PATTERN" value="com.appsdeveloperblog.estore.productservice.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
